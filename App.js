@@ -1,20 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { StyleSheet, Text, View, TextInput, Keyboard, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, } from 'react-native';
 
 export default function App() {
+  const [value, setValue] = useState("");
+  const inputHandler = (text) => setValue(text);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <View style={styles.textInput}>
+          <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}>
+            <TextInput
+              placeholder="Type text"
+              value={value}
+              onChangeText={inputHandler}
+            />
+          </KeyboardAvoidingView></View>
+        <View></View>
+      </View >
+    </TouchableWithoutFeedback>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
+  textInput: {
+    backgroundColor: "tomato",
+    padding: 40,
+  }
 });
