@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, Keyboard, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Button, Alert, Image, ImageBackground, } from 'react-native';
+import * as Font from 'expo-font';
+import { AppLoading } from 'expo';
 
 export default function App() {
   const [name, setName] = useState("");
@@ -85,7 +87,8 @@ const styles = StyleSheet.create({
 
   },
   btn: {
-    marginTop: 143,
+    marginTop: 243,
+    backgroundColor: "#FF6C00",
   },
   bgPhoto: {
     flex: 1,
